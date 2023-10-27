@@ -1,0 +1,45 @@
+# Queries
+type Query
+{
+    findAllProducts: [Product],
+    findProductById(id: Int): Product,
+
+    findAllCategories: [Category],
+    findCategoryById(id: Int): Category
+}
+
+# Mutations and inputs
+type Mutation
+{
+    saveProduct(productRequest: ProductRequest): Product,
+    deleteProduct(id: Int): String
+}
+
+input ProductRequest 
+{
+    id: Int,
+    name: String,
+    description: String,
+    price: Float,
+    stock: Int,
+    category_id: Int
+}
+
+
+# Entities/models
+type Product
+{
+    id: Int,
+    name: String,
+    description: String,
+    price: Float,
+    stock: Int,
+    category: Category
+}
+
+type Category
+{
+    id: Int,
+    name: String,
+    products: [Product]
+}
